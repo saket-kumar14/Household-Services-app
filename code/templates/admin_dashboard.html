@@ -1,0 +1,136 @@
+{% extends "header.html" %} {% block remtitle %} - Admin dashboard{% endblock %}
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/admin_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/admin_dashboard" >Home</a>
+    </div>     
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="/admin_dashboard/admin_summary" >Summary</a>
+    </div>
+    <div style="padding-left: 100px">
+        <form class="input-box1 d-flex" style="padding-left: 5px;"  role="search" action="/admin_search" method="get">
+            <input id="SearchInput" type="search" placeholder="Search Services" style="padding-left: 10px;" aria-label="Search" name="search_query">
+            <button id="SearchButton" style="width: 30%; line-height: 5px; border-radius: 40px; margin-left: 10px;" class="btn btn-custom-purple" type="submit">Search</button>
+    </div>
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div>
+    <h1 style="padding-top: 120px; text-align: center; color: rgb(255, 255, 255);">Admin</h1>
+</div>
+
+<div>
+    <hr style="border: 1px solid white; margin-bottom: 60px;">
+</div>
+
+
+
+<div class="wrapper4">
+    <h2 style="text-align: center; color: white;">Services</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178);">
+            <tr>
+                <th >Service Type</th>
+                <th >Service Description</th>
+                <th >Base Price</th>
+                <th >Time Duration</th>
+                <th >Action</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for service in services %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3">{{ service.service_name }}</td>
+                    <td class="py-3 description">{{ service.description }}</td>
+                    <td class="py-3">{{ service.base_price }}</td>
+                    <td>{{ service.time_duration }}</td>
+                    <td class="py-3">
+                        <div class="d-flex">
+                            <a href="/admin_dashboard/edit_service/{{ service.id }}" class="btn btn-custom-idle" style="width: 28%;">Edit</a>
+                            <a href="/admin_dashboard/delete_service/{{ service.id }}" class="btn btn-custom-red" style="width: 28%;">Delete</a>
+                        </div>    
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>   
+</div>
+
+<div class="container" style="margin-bottom: 50px;">
+    <a href="/admin_dashboard/create_service" class="btn btn-custom-purple">+ New Service</a>
+</div>
+
+<div class="wrapper4">
+    <h2 style="text-align: center; color: white;">Professionals</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178); ">
+            <tr>
+                <th >Username</th>
+                <th >Service Type</th>
+                <th >Action</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for professional in unapproved_professionals %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3"><a class="register-link" href="/admin_dashboard/professional_details/{{ professional.id }}" style="color: rgb(255, 255, 255);">{{ professional.user_name }}</a></td>
+                    <td class="py-3">{{ professional.service.service_name }}</td>
+                    <td class="py-3 d-flex">
+                        <a href="/admin_dashboard/approve_professional/{{ professional.id }}" class="btn btn-custom-green" style="width: 15%;">Approve</a>
+                        <a href="/admin_dashboard/reject_professional/{{ professional.id }}" class="btn btn-custom-red" style="width: 15%;">Reject</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="wrapper4">
+    <h2 style="text-align: center; color: white;">Service Requests</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178); ">
+            <tr>
+                <th>Professional</th>
+                <th>Customer</th>
+                <th>Request Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for request in requests %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3"><a class="register-link" href="/admin_dashboard/professional_details/{{ request.professional.id}}" style="color: rgb(255, 255, 255);">{{ request.professional.user_name }}</td>
+                    <td class="py-3">{{ request.customer.user_name }}</td>
+                    <td class="py-3">{{ request.date_of_request }}</td>
+                    <td class="py-3">{{ request.status }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

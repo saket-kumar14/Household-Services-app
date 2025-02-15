@@ -1,0 +1,42 @@
+{% extends "header.html" %} {% block remtitle %} - Summary{% endblock %}
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+    </div>     
+    
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard/customer_summary" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<h2 class="text-center" style="color: #fff; margin-top: 100px;">Summary</h2>
+<hr style="border: 1px solid white; margin-bottom: 60px;">
+<div class="wrapper6 cntr d-flex">
+    <img src="{{ url_for('static', filename='image/summary3.png') }}" alt="chart of service request " class="img-fluid">
+    <div style="margin: 100px 0 0 100px;">
+        <h4 style="color: #fff;">Service Requests</h4>
+        <br>
+        <p style="color: #fff;">Completed: {{completed}}</p> 
+        <p style="color: #fff;">Accepted: {{accepted}}</p>
+        <p style="color: #fff;">Rejected: {{rejected}}</p>
+        <p style="color: #fff;">Pending: {{pending}}</p>
+    </div>
+</div>
+
+
+{% endblock %}

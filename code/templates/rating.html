@@ -1,0 +1,82 @@
+{% extends "header.html" %} {% block remtitle %} - {% set names = customer.name.split() %}{{ names[0] }}'s Dashboard{% endblock %}
+
+{% block head %} 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+    </div>     
+   
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+    <div style="padding-left: 100px">
+        <form class="input-box1 d-flex">
+            <input id="SearchInput" type="search" placeholder="Search Services" aria-label="Search" style="padding-left: 10px; ">
+            <a href="/customer_dashboard/search" class="custom-search" style="right: 8%; line-height: 44px; color: #888; cursor: pointer;">
+                <i class='bx bx-search-alt-2'></i>
+            </a>
+            <button id="SearchButton" style="width: 30%; line-height: 5px; border-radius: 40px; margin-left: 10px;" class="btn btn-custom-purple" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<div class="navbar-nav wite" style="margin-left: 25px;">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+ 
+
+{% block content %}
+
+
+<form action="/customer_dashboard/close_request/{{ service_request.id }}" method="POST" style="margin-top: 100px;">
+    <h2 style="text-align: center; color: white; margin-top: 150px;">Rate {{ professional.name }}</h2>
+    <div class="wrapper5 ratings" style="margin-top: 20px;">
+        <div class="ratings cntr">
+            <span class="fa fa-star" data-value="1" style="font-size: 25px;"></span>
+            <span class="fa fa-star" data-value="2" style="font-size: 25px;"></span>
+            <span class="fa fa-star" data-value="3" style="font-size: 25px;"></span>
+            <span class="fa fa-star" data-value="4" style="font-size: 25px;"></span>
+            <span class="fa fa-star" data-value="5" style="font-size: 25px;"></span>
+        </div>
+        <input type="hidden" id="rating-input" name="rating" value=""> <!-- Hidden input for rating -->
+        <div class="d-flex" style="margin-top: 50px; margin-left: 70px;">
+            <h5 style="color: white; margin-right: 10px">Review:</h5>
+            <textarea style="background-color: white; width: 50%;" name="review" rows="4" cols="50" required></textarea>
+        </div>
+        <div class="cntr" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-custom-purple">Submit</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    const stars = document.querySelectorAll('.fa');
+    const ratingInput = document.getElementById('rating-input');
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            // Remove 'checked' class from all stars
+            stars.forEach(s => s.classList.remove('checked'));
+
+            // Add 'checked' class to clicked star and all previous stars
+            for (let i = 0; i <= index; i++) {
+                stars[i].classList.add('checked');
+            }
+
+            // Update the hidden input value with the rating
+            ratingInput.value = star.getAttribute('data-value');
+        });
+    });
+</script>
+
+
+{% endblock %}

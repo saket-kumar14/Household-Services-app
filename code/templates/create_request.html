@@ -1,0 +1,72 @@
+{% extends "header.html" %} {% block remtitle %} - {{service.service_name}}{% endblock %}
+
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+    </div>     
+   
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+    <div style="padding-left: 100px">
+        <form id="SearchForm" style="height: 30px;" class="d-flex" role="search">
+            <input id="SearchInput" class="form-control me-2" type="search" placeholder="Search Services" style="width: 350px; font-family: Fredoka;" aria-label="Search">
+            <button id="SearchButton" style="width: 200px; line-height: 5px; padding: 0;" class="btn btn-custom-purple" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<div class="navbar-nav wite" style="margin-left: 30px;">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <h1 style="padding-top: 120px; text-align: center; color: rgb(255, 255, 255);">Best {{service.service_name}} Packages</h1>
+</div>
+
+<div>
+    <hr style="border: 1px solid white; margin-bottom: 60px;">
+</div>
+
+{% for professional in professional %}
+<div class="wrapper5">      
+    <form class="container d-flex align-items-center justify-content-between" action="/customer_dashboard/create_request/{{ service.id }}" method="POST">
+        <div style="word-wrap: break-word; width: 400px; overflow-x: hidden; overflow-y: auto;">
+            <h4 style="color: aliceblue; margin-bottom: 15px;">{{ professional.name }}</h4>
+            <input type="hidden" name="professional" value="{{ professional.user_name }}">
+            <div style="display: flex; flex-direction: row;">
+                <p style="color: aliceblue; margin-right: 10px;">Rating: </p>           
+                <p style="color: aliceblue; font-size: small; line-height: 2em;">{{ professional.overall_rating }}</p>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <div style="display: flex; flex-direction: row;">
+                    <p style="color: aliceblue; margin-right: 10px;">Base Price: </p>
+                    <p style="color: aliceblue; margin-right: 70px; font-size: small; line-height: 2em;">₹{{ service.base_price }}</p>
+                </div>
+                <div style="display: flex; flex-direction: row; margin-left: 10px;">
+                    <p style="color: aliceblue; margin-right: 10px;">Time Duration: </p>
+                    <p style="color: aliceblue; font-size: small; line-height: 2em;">{{ service.time_duration }} </p>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row;">
+                <p style="color: aliceblue; margin-right: 20px;">Description: </p>
+                <p style="color: aliceblue; font-size: small; line-height: 2em;">{{ service.description }}</p>
+            </div>
+            <p style="color: aliceblue;">Directions: <input contenteditable="true" style="display: inline-block; border: 1px solid aliceblue; border-radius: 6px; width: 200px; padding-left: 5px;" name="direction" id="direction"></p>
+        </div>
+        <div style="margin-left: 50px;">
+            <button class="btn btn-custom-purple" type="submit" role="button">Book</button>
+        </div>
+    </form>      
+</div>
+{% endfor %}
+
+{% endblock %}

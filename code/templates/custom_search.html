@@ -1,0 +1,101 @@
+{% extends "header.html" %} {% block remtitle %} - {% set names = customer.name.split() %}{{ names[0] }}'s Dashboard{% endblock %}
+
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+    </div>     
+    
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite" style="margin-left: 25px;">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<h2 style="text-align: center; color: white; margin-top: 100px;">Custom Search</h2>
+<div class="container cntr">
+    <div class="wrapper2" style="margin-top: 20px;" >
+        <form action="/customer_dashboard/search" method="GET" class="custom-form">
+            <div class="input-box">
+                <label class="form-label">Search With</label>
+                <select name="search_type" required>
+                    <option value="">Select options</option>
+                        <option value="pincode">Pincode</option>
+                        <option value="service_name">Service Type</option>
+                        <option value="address">Address</option>                  
+                </select>
+            </div>
+            <div class="input-box" >
+                <label class="form-label" style="color: white;">Enter Details</label>
+                <input type="text" name="search_query" id="search" required>
+            </div>
+            <button type="submit" class="btn btn-custom-purple">Submit</button>
+        </form>
+    </div>
+</div>
+
+{% if services %}
+
+<div class="container cntr " style="width: 100%;">
+    <div class="wrapper4 " style="margin-top: 20px; width: 100%;" >
+        <h2 style="color: white;">All Services</h2>
+        <table class="table1 align-middle mb-0">
+            <thead style="border-bottom: 5px solid rgb(189, 178, 178);">
+                <tr>
+                    <th>Service Type</th>
+                    <th>Description</th>
+                    <th>Base Price</th>
+                    <th>Time Duration</th>
+                    <th>Professional Name</th>
+                    <th>Professional Rating</th>
+                    <th>View Profile</th>
+                </tr>
+            </thead>
+            <tr style="height: 10px;"></tr>
+            <tbody>
+                {% for service in services %}
+                    <tr style="border-bottom: 1px solid white;">
+                        <td class="py-4">{{ service.service_name }}</td>
+                        <td class="py-3 description">{{ service.description }}</td>
+                        <td class="py-3">{{ service.base_price }}</td>
+                        <td class="py-3">{{ service.time_duration }}</td>
+                        <td class="py-3">
+                            {% for professional in service.professionals %}
+                                {{ professional.name }}
+                            {% endfor %}
+                        </td>
+                        <td class="py-3">
+                            {% for professional in service.professionals %}
+                                {{ professional.overall_rating }}
+                            {% endfor %}
+                        </td>
+                        <td class="py-3">
+                            {% for professional in service.professionals %}
+                                <a href="{{ url_for('professional_profile', professional_id=professional.id) }}" class="btn btn-custom-idle" style="width: auto;">View Profile</a>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}      
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<div>
+    <h2 style="text-align: center; color: white; margin-top: 150px;">No Services Found</h2>
+</div>
+{% endif %}
+
+
+{% endblock %}

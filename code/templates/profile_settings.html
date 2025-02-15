@@ -1,0 +1,67 @@
+{% extends "header.html" %} {% block title %}Profile settings{% endblock %}
+
+
+{% block nav %}
+
+{% if session.get('is_customer') %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+{% else %}
+<a class=" nav-link main-icon " href="/professional_dashboard" id="index">Helpr</a>
+{% endif %}
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        {% if session.get('is_customer') %}
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+        {% else %}
+        <a class="nav-link wite" aria-current="page" href="/professional_dashboard" >Home</a>
+        {% endif %}
+    </div>     
+    
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+    <div style="padding-left: 100px">
+        <form id="SearchForm" style="height: 30px;" class="d-flex" role="search">
+            <input id="SearchInput" class="form-control me-2" type="search" placeholder="Search Services" style="width: 350px; font-family: Fredoka;" aria-label="Search">
+            <button id="SearchButton" style="width: 200px; line-height: 5px; padding: 0;" class="btn btn-custom-purple" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<h1 style="padding-top: 120px; text-align: center; color: rgb(255, 255, 255);">Edit Details</h1>
+<div>
+    <hr style="border: 1px solid white; margin-bottom: 60px;">
+</div>
+<div class="container cntr">
+    <div class="wrapper2" style="width: 35%;">
+        <form action="{{ url_for('profile_settings', user_id=user.id) }}" method="POST" >
+            <div class="input-box">
+                <label for="user_name" class="custom-label">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter Your Name" value="{{ user.name }}" required>
+            </div>
+            <div class="input-box">
+                <label for="user_address" class="custom-label">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter Your Address" value="{{ user.address }}" required>
+            </div>
+            <div class="input-box">
+                <label for="user_pincode" class="custom-label">Pincode</label>
+                <input type="text" id="pincode" name="pincode" placeholder="Enter Your Pincode" value="{{ user.pincode }}" required>
+            </div>
+            <div class="d-flex" style="justify-content: center;">
+                <button type="submit" class="btn" style="width: 48%;">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

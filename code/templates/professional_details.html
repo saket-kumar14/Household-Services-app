@@ -1,0 +1,53 @@
+{% extends "header.html" %} {% block title %}{{ professional.user_name }} Details{% endblock %}
+
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/admin_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/admin_dashboard" >Home</a>
+    </div>     
+   
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container cntr">    
+    <div class="container" style="width: 600px; margin: 0 0 0 200px;position: relative; top: 80px;">      
+        <div class="wrapper card">
+            <div class="card-body">
+                <h3 class="card-title">Professional</h3>
+                <h4 class="card-title">User Name : {{ professional.user_name }}</h4>
+                <hr style="border: 1px solid white; margin-bottom: 10px;">
+                <p class="card-text">Name: {{ professional.name }}</p>
+                <p class="card-text">Service ID: {{ professional.service_id }}</p>
+                <p class="card-text">Service Type: {{ professional.service.service_name }}</p>
+                <p class="card-text">Experience: {{ professional.pro_experience }}</p>
+                <p class="card-text">Address: {{ professional.address }}</p>
+                <p class="card-text">Pincode: {{ professional.pincode }}</p>          
+            </div>
+            <div class="cntr">
+                <a href="/static/pdfs/{{ professional.pro_file }}" target="_blank" class="btn" style="width: 200px; padding-top: 10px;">Documentation</a>
+            </div>
+        </div>
+    </div> 
+</div>     
+
+
+
+
+{% endblock %}

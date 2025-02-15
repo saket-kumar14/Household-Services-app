@@ -1,0 +1,523 @@
+@font-face {
+    font-family: "Fredoka";
+    src: url(../fonts/Fredoka-VariableFont_wdth\,wght.ttf);
+} 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "fredoka", sans-serif;
+    letter-spacing: 1px;
+}
+
+/*//Navigation Bar Start//*/
+/*Purple color*/
+.prpl{
+    color: #9541df;
+}
+/*Helpr Icon*/
+.main-icon{
+    color: #9541df;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 30px;
+    font-weight: 700;
+    font-style: normal;
+    font-variation-settings:"wdth" 100;
+}
+.main-icon:hover{
+    color: #6e0bc5
+}
+
+/*Navigation Bar Items*/
+.wite{
+    color: rgb(155, 155, 155)
+
+}
+.wite:hover{
+    color: rgb(255, 255, 255)
+}
+.wite box-icon{
+    fill: rgb(155, 155, 155)
+}
+.wite:hover box-icon{
+    fill: rgb(255, 255, 255)
+}
+
+/*Search bar starts*/
+
+.input-box1 input {
+    width: 300px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+.btn-custom-purple{
+    background-color: #9541df;
+    color: white;
+    border: none;
+    font-family: "Fredoka", sans-serif;
+    text-align: center
+    
+}
+
+.btn-custom-purple:hover{
+    background-color: #6e0bc5;
+    color: white
+}
+
+.custom-search{
+    position: relative;
+}
+
+.custom-search i{
+    font-size: 20px;
+}
+
+.custom-search i:hover{
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.custom-search i:hover::after{
+    content: "Custom Search";
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(54, 54, 54);
+    border-color: black;
+    border-width: 2px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    padding: 7px 7px 10px 7px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 100;
+    font-size: medium;
+}
+
+
+/*/Sesrch bar ends/*/
+
+/*//Navigation Bar End//*/
+
+/*Other Buttons*/
+/*Gray*/
+.btn-custom-idle{
+    background-color: rgb(86, 86, 87);
+    font-family: "Fredoka", sans-serif;
+    text-align: center
+}
+
+.btn-custom-idle:hover{
+    background-color: rgb(67, 67, 68);
+    color: white
+}
+/*Green*/
+.btn-custom-green{
+    background-color: rgb(41, 146, 41);
+    font-family: "Fredoka", sans-serif;
+    text-align: center
+}
+
+.btn-custom-green:hover{
+    background-color: rgb(20, 109, 20);
+    color: white
+}
+/*Red*/
+.btn-custom-red{
+    background-color: rgb(187, 45, 45);
+    font-family: "Fredoka", sans-serif;
+    text-align: center
+}
+
+.btn-custom-red:hover{
+    background-color: rgb(231, 6, 6);
+    color: white
+}
+
+
+/*//Alignment//*/
+
+.cntr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(44, 44, 44)
+}
+
+/*//Form//*/
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin-top: 8%;
+}
+
+.wrapper2{
+    width: 550px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+    text-align: center;
+}
+
+.wrapper4{    
+    width: 70%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);    
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin: auto auto 40px auto;
+}
+
+.wrapper3{    
+    width: 75%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);   
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);    
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin: auto auto 40px auto;
+}
+
+.wrapper5{
+    width: 650px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin: auto auto 40px auto;
+}
+
+.wrapper6{
+    width: auto;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 30px 40px;
+    margin: auto auto 40px auto;
+}
+
+.wrapper h1{
+    font-size: 35px;
+    text-align: center
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+
+}
+
+.wrapper2 .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0 50px;
+    
+}
+
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px 45px 20px 20px
+}
+
+.input-box select{
+    width: 100%;
+    height: auto;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 10px 45px 17px 20px
+}
+
+.input-box select option{
+    color: #525353;
+}
+
+
+
+.input-box input::placeholder{
+    color: #fff
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.input-box label{
+    position: absolute;
+    top: -70%;
+    left: 15px;
+    margin: 10px 10px 10px 5px;
+    gap: 50px;
+}
+
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14.5px;
+    margin: -15px 0 15px
+}
+
+.remember-forgot label{
+    display: flex;
+    align-items: center
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 5px;
+    
+}
+
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #9541df;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500
+}
+
+.wrapper2 .btn{
+    width: 100%;
+    height: 45px;
+    background: #9541df;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500
+}
+
+.wrapper4 .btn{
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    padding-top: 10px;
+    margin-right: 20px;
+}
+
+.wrapper3 .btn{
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    padding-top: 10px;
+    margin-right: 20px;
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 25px 0 15px;
+}
+
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register-link p a:hover{
+    text-decoration: underline
+}
+
+/*Toggle Button*/
+.form-toggle-input {
+    cursor: pointer;
+    appearance: none;
+    width: 2.25em;
+    height: 1.25em;
+    background-color: rgb(46, 46, 46);
+    border-radius: 1.2em;
+    position: relative;
+    transition: background-color 0.15s ease-in-out;
+    border: 1px solid #525353;
+}
+
+.form-toggle-input::after{
+    content: "";
+    position: absolute;
+    top: 51%;
+    left: 0.12em;
+    width: 0.9em;
+    height: 0.9em;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.15s ease-in-out;
+    transform: translateY(-50%)
+}
+
+.form-toggle-input:checked {
+    background-color: #9541df;
+    border-color: #9541df
+}
+
+.form-toggle-input:checked:focus{
+    box-shadow: 1 1 1 1rem #9541df
+}
+
+.form-toggle-input:checked::after{
+    transform: translate(1em, -50%)
+}
+
+.table1{
+    width: 100%;
+    vertical-align: top;
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.btn-warning{
+    position: relative;
+    padding: 11px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #6e0bc5;
+    border: 0;
+    overflow: hidden;
+}
+
+.description{
+    word-wrap: break-word;       /* Wrap words that are too long */
+    white-space: normal;         /* Allow text to wrap onto the next line */
+    max-width: 200px;            /* Set a maximum width to prevent horizontal stretching */
+    max-height: 100px;           /* Set a maximum height to enable scrolling if the content is too long */
+    overflow-y: auto;            /* Enable vertical scrolling */
+    overflow-x: hidden;          /* Prevent horizontal scrolling */
+    padding: 0 50px 0 0;         /* Optional padding for better readability */
+}
+
+/*Profile Button*/
+.profile-button{
+    color: rgb(155, 155, 155);
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+    font-size: 15px;
+}
+
+.profile-button:hover{
+    color: white;
+}
+
+/*Button for service booking for customer*/
+.btn-service-booking {
+    width: 100%;
+    height: 60px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 19px;
+    color: #8d58bb;
+    background: transparent;
+    font-weight: 1000;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-service-booking:hover{
+    color: #ffffff;
+    background-color: rgba(44, 44, 44, 0.301);
+    transition: all 0.2s ease-in-out;
+}
+
+.rainbow {
+    background: linear-gradient(to right, #6e0bc5,#6e0bc5,#8d58bb, #863ec5, #a080c1, #9653da, #641ba5, #6e0bc5, #6e0bc5);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+/*Ratings*/
+.fa {
+    font-size: 24px; /* Adjust size */
+    color: #ffffff; /* Default color for unselected stars */
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.fa:hover{
+    color: #ffcc00; /* Color when hovering */
+}
+
+.fa.checked {
+    color: #ffcc00; /* Color for selected stars */
+}
