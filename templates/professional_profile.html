@@ -1,0 +1,64 @@
+{% extends "header.html" %} {% block remtitle %} - {{ professional.name }}{% endblock %}
+
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+    </div>     
+   
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+
+</div>
+<div class="navbar-nav wite" style="margin-left: 25px;">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container cntr">    
+    <div class="container" style="width: 800px; margin: 0 0 0 300px;position: relative; top: 80px;">      
+        <div class="wrapper card">
+            <div class="card-body">
+                <h3 class="card-title" style="text-align: center;">Professional</h3>
+                <hr style="border: 1px solid white; margin-bottom: 10px;">
+                <p class="card-text">Name: {{ professional.name }}</p>
+                <p class="card-text">Service Type: {{ professional.service.service_name }}</p>
+                <p class="card-text">Rating: {{ professional.overall_rating }} ({{ professional.rating_count}})</p>
+                <p class="card-text">Experience: {{ professional.pro_experience }}</p>
+                <p class="card-text">Address: {{ professional.address }}</p>
+                <p class="card-text">Pincode: {{ professional.pincode }}</p>          
+            </div>
+        </div>
+    </div> 
+</div>     
+
+{% if reviews %}
+    <div class="container wrapper4" style="margin-top: 150px; width: 60%;">
+        <h2 style="text-align: center; color: white;">Customer Reviews</h2>
+        <div>
+            <hr style="border: 2px solid white; margin-bottom: 40px;">
+        </div>
+        {% for review in reviews %}
+            <div style="background-color: aliceblue; margin-bottom: 20px; padding: 15px; border-radius: 8px;">
+                <p><strong>{{ review.customer.user_name }}:</strong> {{ review.review_by_customer }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="container wrapper4" style="margin-top: 150px; width: 60%;">
+        <h2 style="text-align: center; color: white;">Customer Reviews</h2>
+        <p style="color: white; text-align: center;">No reviews available for this professional.</p>
+    </div>
+{% endif %}
+
+{% endblock %}

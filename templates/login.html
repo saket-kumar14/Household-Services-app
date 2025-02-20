@@ -1,0 +1,55 @@
+{% extends "header.html" %} {% block remtitle %} - Login{% endblock %}
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/" >Home</a>
+    </div>     
+    
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/login">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Login                       
+    </a> 
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container cntr" style="background: url(static/image/bg3.svg) no-repeat; background-size: cover; background-position-y: -20px; height:92vh;">
+    <div class="wrapper">
+        <form method="post" action="/login" >
+            <h1 style="color: white;">Login</h1>
+            <hr style="border: 1px solid white; margin-bottom: 50px;">
+            <div class="input-box">
+                <input type="text" placeholder="Username" name="username" required>
+                <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" name="password" required>   
+                <i class="bx bx-lock-alt"></i>       
+            </div>
+            <div class="remember-forgot">
+                <label style="color: white;"><input class="form-toggle-input" type="checkbox" role="switch" > Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="/customer_register">Register</a></p> 
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}

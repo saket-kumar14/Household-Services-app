@@ -1,0 +1,68 @@
+{% extends "header.html" %} {% block remtitle %} - {{search_query}}{% endblock %}
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/customer_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard" >Home</a>
+    </div>     
+    
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="/customer_dashboard/customer_summary" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite" style="margin-left: 25px;">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="padding-top: 100px;">
+    <h2 class="text-center" style="color: #fff;">Search Results for "{{ search_query }}"</h2>
+    <div class="results-box" style="background-color: #fff; padding: 20px; margin-top: 20px; border-radius: 8px;">
+        {% if services or professionals or customers %}
+            {% if services %}
+                <ul>
+                    {% for service in services %}
+                        <li style="margin-bottom: 10px;">
+                            <p><strong>{{ service.service_name }}</strong>
+                            <p style="color: #666;">{{ service.description }}</p>
+                            <p><strong>Price:</strong> {{ service.base_price }} | 
+                            <strong>Duration:</strong> {{ service.time_duration }}</p>
+                            <p><strong>Professionals:</strong> 
+                                {% for professional in service.professionals %}
+                                    <a href="{{ url_for('create_request', service_id=service.id) }}" style="text-decoration: underline; color: #333;">
+                                        {{ professional.user_name }}
+                                    </a>
+                                    {% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if professionals %}
+                <ul>
+                    {% for professional in professionals %}
+                        <li style="margin-bottom: 10px;">
+                            <p><strong><a href="{{ url_for('create_request', service_id=professional.service.id) }}" style="text-decoration: underline; color: #333;">{{ professional.user_name }}</a></strong>
+                            <p><strong>Name:</strong> {{ professional.name }}</p>
+                            <p style="color: #666;">{{ professional.description }}</p>
+                            <p><strong>Rating: </strong> {{ professional.overall_rating }}</p>
+                            <p><strong>Service Type: </strong>{{ professional.service.service_name }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}    
+        {% else %} 
+            <p style="color: #000000; font-size: larger;">No results found</p>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

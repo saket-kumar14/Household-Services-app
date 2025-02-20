@@ -1,0 +1,132 @@
+{% extends "header.html" %} {% block remtitle %} - {% set names = professional.name.split() %}{{ names[0] }}'s Dashboard{% endblock %}
+
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/professional_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/professional_dashboard" >Home</a>
+    </div>     
+   
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="/professional_dashboard/professional_summary" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite" style="margin-left: 30px;">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container d-flex"  style="margin-top: 100px; justify-content: flex-end; margin-right: 300px;">
+    <a class="profile-button d-flex align-items-center" aria-current="page" href="/profile_settings">                           
+        <i class="bx bxs-user-circle" style="margin-right: 2px; font-size: 25px"></i>                                               
+        {{ professional.name }}                       
+    </a> 
+</div>
+
+<div class="wrapper4" style="margin-top: 100px;">
+    <h2 style="text-align: center; color: white;">Service Requests</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178);">
+            <tr>
+                <th >Customer name</th>
+                <th >Service Direction</th>
+                <th >Address</th>
+                <th >Pincode</th>
+                <th >Date of Service</th>
+                <th >Action</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for request in pending_requests %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3">{{ request.customer.user_name }}</td>
+                    <td class="py-3">{{ request.direction }}</td>
+                    <td class="py-3 description">{{ request.customer.address }}</td>
+                    <td>{{ request.customer.pincode }}</td>
+                    <td class="py-3">{{ request.date_of_request }}</td>
+                    <td class="py-3">
+                        <div class="d-flex">
+                            <a href="/professional_dashboard/accept_request/{{ request.id }}" class="btn btn-custom-green" style="width: 28%;">Accept</a>
+                            <a href="/professional_dashboard/reject_request/{{ request.id }}" class="btn btn-custom-red" style="width: 28%;">Reject</a>
+                        </div>    
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>   
+</div>
+
+<div class="wrapper4">
+    <h2 style="text-align: center; color: white;">Active Services</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178);">
+            <tr>
+                <th >Customer name</th>
+                <th >Service Type</th>
+                <th >Address</th>
+                <th >Pincode</th>
+                <th >Date of Service</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for request in accepted_requests %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3">{{ request.customer.user_name }}</td>
+                    <td class="py-3">{{ request.service.service_name }}</td>                  
+                    <td class="py-3 description">{{ request.customer.address }}</td>
+                    <td class="py-3">{{ request.customer.pincode }}</td>
+                    <td class="py-3">{{ request.date_of_request }}</td>
+                </tr>
+            {% endfor %}
+        </tbody> 
+    </table>   
+</div>
+
+<div class="wrapper4">
+    <h2 style="text-align: center; color: white;">Closed Services</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178);">
+            <tr>
+                <th>Customer name</th>
+                <th>Service Type</th>
+                <th>Address</th>
+                <th>Pincode</th>
+                <th>Rating By Customer</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for request in completed_requests %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3">{{ request.customer.user_name }}</td>
+                    <td class="py-3">{{ request.service.service_name }}</td>
+                    <td class="py-3 description">{{ request.customer.address }}</td>
+                    <td class="py-3">{{ request.customer.pincode }}</td>
+                    <td>{{ request.rating_by_customer }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>   
+</div>
+
+
+
+{% endblock %}

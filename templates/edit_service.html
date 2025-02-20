@@ -1,0 +1,54 @@
+{% extends "header.html" %} {% block remtitle %} - Edit Service{% endblock %}
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/admin_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/admin_dashboard" >Home</a>
+    </div>     
+  
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+  
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<h1 style="padding-top: 120px; text-align: center; color: rgb(255, 255, 255);">Edit Service</h1>
+<div>
+    <hr style="border: 1px solid white; margin-bottom: 60px;">
+</div>
+<div class="container cntr">
+    <div class="wrapper2">
+        <form action="/admin_dashboard/edit_service/{{ service.id }}" method="POST" >
+            <div class="input-box">
+                <label for="service_description" class="custom-label">Description</label>
+                <input type="text" id="description" name="description" placeholder="Enter Service Description" value="{{ service.description }}" required>
+            </div>
+            <div class="input-box">
+                <label for="base_price" class="custom-label">Base Price</label>
+                <input type="text" id="base_price" name="base_price" placeholder="Enter Base Price" value="{{ service.base_price }}" required>
+            </div>
+            <div class="input-box">
+                <label for="time_duration" class="custom-label">Time Duration</label>
+                <input type="text" id="time_duration" name="time_duration" placeholder="Enter Time Duration" value="{{ service.time_duration }}" required>
+            </div>
+            <div class="d-flex" style="justify-content: space-between;">
+                <button type="submit" class="btn" style="width: 48%;">Update Service</button>
+                <a href="/admin_dashboard" class="btn" style="width: 48%; padding-top: 10px; background-color: rgb(86, 86, 87);" >Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

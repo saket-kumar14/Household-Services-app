@@ -1,0 +1,90 @@
+{% extends "header.html" %} {% block remtitle %} - Admin dashboard{% endblock %}
+
+{% block nav %}
+<a class=" nav-link main-icon " href="/admin_dashboard" id="index">Helpr</a>
+<div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding-left: 90px; padding-top: 5PX;">   
+    <div class="navbar-nav" >
+        <a class="nav-link wite" aria-current="page" href="/admin_dashboard" >Home</a>
+    </div>     
+ 
+    <div class="navbar-nav" style="padding-left: 50px;">
+        <a class="nav-link wite" aria-current="page" href="#" >Summary</a>
+    </div>
+</div>
+<div class="navbar-nav wite">
+    <a class="nav-link d-flex align-items-center" aria-current="page" href="/logout">                           
+        <i class="bx bxs-user" style="margin-right: 2px; font-size: 15px"></i>                                               
+        Logout                       
+    </a> 
+</div>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="wrapper4" style="margin-top: 200px;">
+    <h2 style="text-align: center; color: white;">Customers</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178); ">
+            <tr>
+                <th>Username</th>
+                <th>address</th>
+                <th>pincode</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>                   
+                <tr>
+                    <td class="py-3">{{ customer.user_name }}</a></td>
+                    <td class="py-3">{{ customer.address }}</td>
+                    <td class="py-3">{{ customer.pincode }}</td>
+                    <td class="py-3 d-flex">
+                        {% if customer.is_approved == False and customer.is_rejected == True %}
+                            <a href="/admin_dashboard/unblock_customer/{{ customer.id }}" class="btn btn-custom-green" style="width: auto;">Unblock</a>
+                        {% else %}
+                            <a href="/admin_dashboard/block_customer/{{ customer.id }}" class="btn btn-custom-red" style="width: auto">Block</a>
+                        {%  endif %}
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div> 
+
+
+<div class="wrapper4" style="margin-top: 100px;">
+    <h2 style="text-align: center; color: white;">Service History</h2>
+    <div>
+        <hr style="border: 2px solid white; margin-bottom: 40px;">
+    </div>
+    <table class="table1 align-middle mb-0">
+        <thead style="border-bottom: 5px solid rgb(189, 178, 178);">
+            <tr>
+                <th>Service Type</th>
+                <th>Professional Name</th>
+                <th>Direction</th>
+                <th>Date of Service</th>
+            </tr>
+        </thead>
+        <tr style="height: 10px;"></tr>
+        <tbody>
+            {% for request in service_history %}
+                <tr style="border-bottom: 1px solid white;">
+                    <td class="py-3">{{ request.service.service_name }}</td>
+                    <td class="py-3 ">{{ request.professional.user_name }}</td>
+                    <td class="py-3 description">{{ request.direction }}</td>
+                    <td class="py-3">{{ request.date_of_request }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>   
+</div>
+
+
+{% endblock %}
